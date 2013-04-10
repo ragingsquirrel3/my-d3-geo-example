@@ -71,10 +71,18 @@ var svg = d3.select("#body").append("svg:svg")
     .on("mousedown", mousedown);
 
 d3.json("world-countries.json", function(collection) {
+  console.log(collection);
   feature = svg.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
-      .attr("d", clip);
+      .attr("d", clip).style("fill", function (d) {
+        console.log(d);
+        if (Math.random() * 3 > 1) {
+          return "blue";
+        } else {
+          return "red";
+        }
+      });
 
   feature.append("svg:title")
       .text(function(d) { return d.properties.name; });
