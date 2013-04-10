@@ -76,7 +76,7 @@ d3.json("world-countries.json", function(collection) {
       .data(collection.features)
     .enter().append("svg:path")
       .attr("d", clip).style("fill", function (d) {
-        console.log(d);
+        console.log(d); // <= This is the country!
         if (Math.random() * 3 > 1) {
           return "blue";
         } else {
